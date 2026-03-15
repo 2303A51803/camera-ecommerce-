@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sony Cameras for Sale</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("https://wallpaper.forfun.com/fetch/06/06280a17826041c78966307a7170f16d.jpeg");
+            text-align: center;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+        }
+
+        #camera-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            justify-content: center;
+        }
+
+        .camera {
+            width: 200px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .camera img {
+            width: 100%;
+            height: 180px; /* Fixed height for uniformity */
+            object-fit: cover; /* Maintain aspect ratio */
+            border-radius: 8px;
+        }
+
+        .camera h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .camera p {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .camera .description {
+            font-size: 14px;
+            color: #666;
+            margin: 8px 0;
+            line-height: 1.4;
+        }
+
+        .camera button {
+            padding: 10px;
+            font-size: 14px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .camera button:hover {
+            background-color: #218838;
+        }
+
+        .cart-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: white;
+            background-color: #2c3e50;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #cart {
+            list-style: none;
+            padding: 0;
+        }
+
+        #cart li {
+            font-size: 1rem;
+            color: #333;
+            padding: 8px 0;
+        }
+
+        .remove-button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 5px 10px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sony Cameras for Sale</h1>
+    </header>
+
+    <div class="cart-icon" id="cart-icon">
+        🛒 <span id="cart-count">0</span>
+    </div>
+
+    <section id="camera-gallery">
+        <div class="camera">
+            <img src="https://th.bing.com/th/id/OIP.KjielO7SSi2mo1pNrjNvVwHaHa?w=146&h=180&c=7&r=0&o=5&dpr=1.3 &pid=1.7" alt="Sony A7 III">
+            <h3>Sony A7 III</h3>
+            <p>₹1,50,000</p>
+            <div class="description">
+                <p>Sensor: Full-Frame Exmor R CMOS</p>
+                <p>Electronic Shutter: 1/8000s</p>
+                <p>LCD Monitor: 3.0" 1.44M-dot</p>
+            </div>
+            <button onclick="addToCart('Sony A7 III', 150000)">Add to Cart</button>
+        </div>
+        <div class="camera">
+            <img src="https://th.bing.com/th/id/OIP.EJtjhq30vG3u8ibVh4NgKQHaFj?w=226&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Sony A7R IV">
+            <h3>Sony A7R IV</h3>
+            <p>₹2,50,000</p>
+            <div class="description">
+                <p>Sensor: Full-Frame Exmor R CMOS</p>
+                <p>Electronic Shutter: 1/8000s</p>
+                <p>LCD Monitor: 3.0" 1.44M-dot</p>
+            </div>
+            <button onclick="addToCart('Sony A7R IV', 250000)">Add to Cart</button>
+        </div>
+        <div class="camera">
+            <img src="https://th.bing.com/th/id/OIP.ZGHYrgmIxRXtajE2e9eokgHaHa?w=174&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Sony A9 II">
+            <h3>Sony A9 II</h3>
+            <p>₹3,50,000</p>
+            <div class="description">
+                <p>Sensor: Full-Frame Exmor RS CMOS</p>
+                <p>Electronic Shutter: 1/32000s</p>
+                <p>LCD Monitor: 3.0" 1.44M-dot</p>
+            </div>
+            <button onclick="addToCart('Sony A9 II', 350000)">Add to Cart</button>
+        </div>
+        <div class="camera">
+            <img src="https://th.bing.com/th/id/OIP.CrxAuHZ0VyOMi06bA1QHZwHaF0?w=241&h=189&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Sony A7S III">
+            <h3>Sony A7S III</h3>
+            <p>₹2,80,000</p>
+            <div class="description">
+                <p>Sensor: Full-Frame Exmor R CMOS</p>
+                <p>Electronic Shutter: 1/8000s</p>
+                <p>LCD Monitor: 3.0" 1.44M-dot</p>
+            </div>
+            <button onclick="addToCart('Sony A7S III', 280000)">Add to Cart</button>
+        </div>
+        <div class="camera">
+            <img src="https://th.bing.com/th/id/OIP.3DYxdJqmd8r1V-9G0eHK0AHaGD?w=220&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Sony RX100 VII">
+            <h3>Sony RX100 VII</h3>
+            <p>₹95,000</p>
+            <div class="description">
+                <p>Sensor: 1" Exmor RS CMOS</p>
+                <p>Electronic Shutter: 1/32000s</p>
+                <p>LCD Monitor: 3.0" 1.44M-dot</p>
+            </div>
+            <button onclick="addToCart('Sony RX100 VII', 95000)">Add to Cart</button>
+        </div>
+        <div class="camera">
+            <img src="https://th.bing.com/th/id/OIP.Srmo4fBjCKCypHkXwFlAgAHaEK?w=294&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7 " alt="Sony ZV-1">
+            <h3>Sony ZV-1</h3>
+            <p>₹55,000</p>
+            <div class="description">
+                <p>Sensor: 1" Exmor RS CMOS</p>
+                <p>Electronic Shutter: 1/32000s</p>
+                <p>LCD Monitor: 3.0" 1.44M-dot</p>
+            </div>
+            <button onclick="addToCart('Sony ZV-1', 55000)">Add to Cart</button>
+        </div>
+        <div class="camera">
+            <img src="https://th.bing.com/th/id/OIP.Yov4XVLH65RW49MZt3RF_gHaHa?w=164&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Sony A6400">
+            <h3>Sony A6400</h3>
+            <p>₹65,000</p>
+            <div class="description">
+                <p>Sensor: APS-C Exmor CMOS</p>
+                <p>Electronic Shutter: 1/4000s</p>
+                <p>LCD Monitor: 3.0" 921k-dot</p>
+            </div>
+            <button onclick="addToCart('Sony A6400', 65000)">Add to Cart</button>
+        </div>
+        <div class="camera">
+            <img src="https://th.bing.com/th/id/OIP.-PgsMQ4k4VgPkFrZdgYgoAHaHa?w=193&h=193&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Sony A6600">
+            <h3>Sony A6600</h3>
+            <p>₹85,000</p>
+            <div class="description">
+                <p>Sensor: APS-C Exmor CMOS</p>
+                <p>Electronic Shutter: 1/4000s</p>
+                <p>LCD Monitor: 3.0" 921k-dot</p>
+            </div>
+            <button onclick="addToCart('Sony A6600', 85000)">Add to Cart</button>
+        </div>
+        <div class="camera">
+            <img src="https://th.bing.com/th/id/OIP.xHS2D3eXbZbz0hc-c0wv1gHaEK?w=303&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Sony A7C">
+            <h3>Sony A7C</h3>
+            <p>₹1,50,000</p>
+            <div class="description">
+                <p>Sensor: Full-Frame Exmor R CMOS</p>
+                <p>Electronic Shutter: 1/4000s</p>
+                <p>LCD Monitor: 3.0" 1.44M-dot</p>
+            </div>
+            <button onclick="addToCart('Sony A7C', 150000)">Add to Cart</button>
+        </div>
+        <div class="camera">
+            <img src="https://th.bing.com/th/id/OIP.h5gCfImIeN30TdF4xlfAmQHaEo?w=253&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Sony A1">
+            <h3>Sony A1</h3>
+            <p>₹4,50,000</p>
+            <div class="description">
+                <p>Sensor: Full-Frame Exmor RS CMOS</p>
+                <p>Electronic Shutter: 1/32000s</p>
+                <p>LCD Monitor: 3.0" 1.44M-dot</p>
+            </div>
+            <button onclick="addToCart('Sony A1', 450000)">Add to Cart</button>
+        </div>
+    </section>
+
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-modal">&times;</span>
+            <h2>Your Cart</h2>
+            <ul id="modal-cart"></ul>
+            <p>Total Price: ₹<span id="modal-total-price">0</span></p>
+        </div>
+    </div>
+
+    <script>
+        const cart = [];
+        let totalPrice = 0;
+
+        function addToCart(productName, price) {
+            const product = { name: productName, price: price };
+            cart.push(product);
+            totalPrice += price;
+            document.getElementById('cart-count').textContent = cart.length;
+            alert(`${productName} has been added to your cart.`);
+        }
+
+        document.getElementById('cart-icon').onclick = function() {
+            displayModalCart();
+            document.getElementById('cartModal').style.display = "block";
+        }
+
+        document.getElementById('close-modal').onclick = function() {
+            document.getElementById('cartModal').style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('cartModal')) {
+                document.getElementById('cartModal').style.display = "none";
+            }
+        }
+
+        function displayModalCart() {
+            const modalCartList = document.getElementById('modal-cart');
+            modalCartList.innerHTML = '';
+            cart.forEach((item, index) => {
+                const listItem = document.createElement('li');
+                listItem.textContent = item.name + ' - ₹' + item.price;
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'Remove';
+                removeButton.className = 'remove-button';
+                removeButton.onclick = function() {
+                    removeFromCart(index);
+                };
+                listItem.appendChild(removeButton);
+                modalCartList.appendChild(listItem);
+            });
+            document.getElementById('modal-total-price').textContent = totalPrice;
+        }
+
+        function removeFromCart(index) {
+            totalPrice -= cart[index].price;
+            cart.splice(index, 1);
+            document.getElementById('cart-count').textContent = cart.length;
+            displayModalCart();
+        }
+    </script>
+    <script src="image-fallback.js"></script>
+</body>
+</html>

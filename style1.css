@@ -1,0 +1,220 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-image: url("https://wallpaper.forfun.com/fetch/06/06280a17826041c78966307a7170f16d.jpeg");
+    background-size: cover;
+    /* Adjusts image to cover the whole area */
+    background-repeat: no-repeat;
+    /* Prevents image from repeating */
+    background-position: center;
+    /* Centers the image */
+}
+
+/* Header Styling */
+header {
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Semi-transparent black background for readability */
+    color: #fff;
+    padding: 15px 20px;
+}
+
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input[type="text"] {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+}
+
+.search-bar button {
+    padding: 8px 12px;
+    background-color: #f0c14b;
+    border: none;
+    border-radius: 4px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.user-options a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 15px;
+    transition: color 0.3s;
+}
+
+.user-options a:hover {
+    color: #f0c14b;
+}
+
+/* Navigation Bar Styling */
+.navigation {
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Semi-transparent black for contrast */
+    padding: 10px;
+}
+
+.navigation ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.navigation ul li {
+    margin: 0 15px;
+}
+
+.navigation ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.navigation ul li a:hover {
+    color: #f0c14b;
+}
+
+/* Hero Section Styling */
+.hero-section {
+    display: flex;
+    align-items: center;
+    padding: 40px 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Dark overlay for readability */
+    color: #fff;
+    position: relative;
+}
+
+.hero-section img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+.hero-text {
+    max-width: 600px;
+}
+
+.hero-text h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.hero-text p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.btn-learn-more {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #f0c14b;
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.btn-learn-more:hover {
+    background-color: #ffa41b;
+}
+
+/* Categories Section Styling */
+.categories {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Slightly transparent white */
+    text-align: center;
+}
+
+.categories h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    max-width: 920px;
+    margin: 0 auto;
+}
+
+.category-item {
+    width: 100%;
+    max-width: 220px;
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 12px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.category-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
+}
+
+.category-item a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.category-item img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.category-item img.product-shot {
+    object-fit: contain;
+    background-color: #fff;
+}
+
+.category-item h3 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Footer Styling */
+footer {
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Semi-transparent black for readability */
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    font-size: 14px;
+}

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Shot - Your Camera Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("https://wallpaper.forfun.com/fetch/06/06280a17826041c78966307a7170f16d.jpeg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+        }
+
+        header {
+            padding: 20px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            color: #ffcc00;
+            font-size: 36px;
+        }
+
+        p {
+            color: #fff;
+            font-size: 18px;
+        }
+
+        nav {
+            background-color: rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+            position: sticky;
+            top: 0;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: #fff;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            color: #ffcc00;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        #hero {
+            padding: 50px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.6);
+            margin-top: 50px;
+        }
+
+        #hero h2 {
+            color: #ffcc00;
+        }
+
+        #products {
+            padding: 20px;
+        }
+
+        .product-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .product-card {
+            border: 1px solid #fff;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 220px;
+            transition: transform 0.2s, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .product-card img {
+            border-radius: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        #cart-icon {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        #cart-icon img {
+            width: 40px;
+            height: 40px;
+        }
+
+        #cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        #cart-details {
+            display: none;
+            position: fixed;
+            top: 50px;
+            right: 20px;
+            background-color: white;
+            color: black;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            width: 300px;
+            border-radius: 10px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            background-color: rgba(0, 0, 0, 0.05);
+            padding: 8px;
+            border-radius: 5px;
+        }
+
+        .remove-item {
+            cursor: pointer;
+            color: red;
+        }
+
+        .add-to-cart {
+            background-color: #ffcc00;
+            color: black;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-to-cart:hover {
+            background-color: #e6b800;
+        }
+
+        #close-cart {
+            background-color: #ff6666;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        #close-cart:hover {
+            background-color: #ff4d4d;
+        }
+
+        .product-description {
+            color: #fff;
+            font-size: 14px;
+            margin-top: 10px;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 10px;
+            border-radius: 5px;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Pixel Shot</h1>
+        <p>Your one-stop shop for all things camera-related!</p>
+    </header>
+
+    <nav>
+        <a href="#hero">Home</a>
+        <a href="#products">Products</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="hero">
+        <h2>Capture Every Moment</h2>
+        <p>Discover cameras, lenses, and accessories at unbeatable prices.</p>
+        <button id="shop-now-btn"
+            style="background-color: #ffcc00; color: black; padding: 10px 20px; font-size: 18px; border: none; border-radius: 5px; cursor: pointer;">Shop
+            Now</button>
+    </section>
+
+    <section id="products">
+        <h2>Featured Products</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="C:\Users\nitin\Downloads\pasonic.jpg" alt="Camera 1" width="100%">
+                <h3>Professional DSLR</h3>
+                <p>$899</p>
+                <button class="add-to-cart" data-name="Professional DSLR" data-price="899">Add to Cart</button>
+                <div class="product-description">
+                    Sensor: APS-C X-Trans CMOS II<br>
+                    Electronic Shutter: 1/32000s<br>
+                    LCD Monitor: 3.0" 1.04M-dot
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="C:\Users\nitin\Downloads\nikon.jpg" alt="Camera 2" width="100%">
+                <h3>Mirrorless Camera</h3>
+                <p>$749</p>
+                <button class="add-to-cart" data-name="Mirrorless Camera" data-price="749">Add to Cart</button>
+                <div class="product-description">
+                    Sensor: Full-frame CMOS<br>
+                    Electronic Shutter: 1/16000s<br>
+                    LCD Monitor: 3.0" 1.44M-dot
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="C:\Users\nitin\Downloads\lens.jpg" alt="Lens" width="100%">
+                <h3>50mm Prime Lens</h3>
+                <p>$199</p>
+                <button class="add-to-cart" data-name="50mm Prime Lens" data-price="199">Add to Cart</button>
+                <div class="product-description">
+                    Focal Length: 50mm<br>
+                    Aperture: f/1.8<br>
+                    Lens Mount: Canon EF
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <p>Contact us: support@pixelshot.com | Call: 123-456-7890</p>
+        <p>&copy; 2024 Pixel Shot. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Cart Icon -->
+    <div id="cart-icon">
+        <img src="https://img.icons8.com/ios-filled/100/shopping-cart.png" alt="Cart Icon">
+        <span id="cart-count">0</span>
+    </div>
+
+    <!-- Cart Details Modal -->
+    <div id="cart-details">
+        <h3>Your Cart</h3>
+        <div id="cart-items"></div>
+        <button id="close-cart">Close</button>
+    </div>
+
+    <script>
+        let cart = [];
+        const cartIcon = document.getElementById('cart-icon');
+        const cartCount = document.getElementById('cart-count');
+        const cartDetails = document.getElementById('cart-details');
+        const cartItems = document.getElementById('cart-items');
+
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const productName = button.getAttribute('data-name');
+                const productPrice = button.getAttribute('data-price');
+                cart.push({ name: productName, price: productPrice });
+                updateCart();
+                displayCartItems();
+            });
+        });
+
+        cartIcon.addEventListener('click', () => {
+            cartDetails.style.display = 'block';
+        });
+
+        document.getElementById('close-cart').addEventListener('click', () => {
+            cartDetails.style.display = 'none';
+        });
+
+        function updateCart() {
+            cartCount.textContent = cart.length;
+        }
+
+        function displayCartItems() {
+            cartItems.innerHTML = '';
+            cart.forEach((item, index) => {
+                const cartItemDiv = document.createElement('div');
+                cartItemDiv.classList.add('cart-item');
+                cartItemDiv.innerHTML = `
+                    <span>${item.name} - $${item.price}</span>
+                    <span class="remove-item" data-index="${index}">Remove</span>
+                `;
+                cartItems.appendChild(cartItemDiv);
+            });
+            document.querySelectorAll('.remove-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const index = item.getAttribute('data-index');
+                    cart.splice(index, 1);
+                    updateCart();
+                    displayCartItems();
+                });
+            });
+        }
+    </script>
+    <script src="image-fallback.js"></script>
+</body>
+
+</html>

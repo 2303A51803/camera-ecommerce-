@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cameras - View Products</title>
+    <style>
+        body {
+            background-image: url("https://wallpaper.forfun.com/fetch/06/06280a17826041c78966307a7170f16d.jpeg");
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px;
+            background-color: #2c3e50;
+            color: white;
+            border-bottom: 5px solid #34495e;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        header p {
+            margin: 10px 0 0;
+            font-size: 1.2rem;
+        }
+
+        .cart-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: white;
+            background-color: #2c3e50;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .product-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            justify-content: center;
+        }
+
+        .product-item {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            text-align: center;
+            padding: 15px;
+            margin: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .product-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .product-item h2 {
+            font-size: 1.2rem;
+            color: #333;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        .product-item p {
+            font-size: 0.9rem;
+            color: #444;
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+
+        .product-item .features {
+            font-style: italic;
+            color: #555;
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+
+        .product-item button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .product-item button:hover {
+            background-color: #34495e;
+        }
+
+        .product-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .cart-section {
+            text-align: center;
+            padding: 20px;
+            background-color: #ecf0f1;
+        }
+
+        .cart-section h2 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+        }
+
+        #cart {
+            list-style: none;
+            padding: 0;
+        }
+
+        #cart li {
+            font-size: 1rem;
+            color: #333;
+            padding: 8px 0;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+            padding-top: 60px;
+            /* Location of the box */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            /* Could be more or less, depending on screen size */
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .remove-button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 5px 10px;
+            margin-left: 10px;
+        }
+
+        .confirm-rental-btn {
+            margin-top: 16px;
+            padding: 12px 24px;
+            background-color: #2c3e50;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .confirm-rental-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .policy-note {
+            margin: 20px auto 0;
+            max-width: 860px;
+            text-align: left;
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .policy-note h3 {
+            margin: 0 0 10px;
+            color: #2c3e50;
+        }
+
+        .policy-note ul {
+            margin: 0;
+            padding-left: 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .toast-message {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            max-width: 430px;
+            background: #ffffff;
+            color: #2c3e50;
+            border-left: 5px solid #2c3e50;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+            border-radius: 8px;
+            padding: 14px 16px;
+            line-height: 1.45;
+            opacity: 0;
+            transform: translateY(16px);
+            pointer-events: none;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+            z-index: 9999;
+        }
+
+        .toast-message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .toast-message.warning {
+            border-left-color: #d35400;
+        }
+
+        .toast-message.error {
+            border-left-color: #c0392b;
+        }
+
+        .toast-message.success {
+            border-left-color: #1e8449;
+        }
+
+        .consent-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .consent-overlay.show {
+            display: flex;
+        }
+
+        .consent-card {
+            width: min(92%, 500px);
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+        }
+
+        .consent-card h3 {
+            margin: 0 0 10px;
+            color: #2c3e50;
+        }
+
+        .consent-card p {
+            margin: 0;
+            color: #34495e;
+            line-height: 1.5;
+        }
+
+        .consent-actions {
+            margin-top: 16px;
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        .consent-btn {
+            border: none;
+            border-radius: 6px;
+            padding: 10px 16px;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .consent-btn.accept {
+            background: #1e8449;
+            color: #fff;
+        }
+
+        .consent-btn.deny {
+            background: #e5e7eb;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Cameras</h1>
+        <p>Explore our wide range of cameras for every skill level.</p>
+    </header>
+
+    <div class="cart-icon" id="cart-icon">
+        🛒 <span id="cart-count">0</span>
+    </div>
+
+    <section class="product-gallery">
+        <div class="product-item">
+            <img src="https://th.bing.com/th/id/OIP.YEs_d6ow_2EVzvV82M75jwAAAA?w=244&h=183&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                alt="Camera 1">
+            <h2>Camera Model 1</h2>
+            <p class="features">Features: 24.1MP APS-C CMOS sensor, 45-point autofocus, Full HD video recording, Wi-Fi
+                connectivity.</p>
+            <p>Price per day: ₹10</p>
+            <button onclick="addToCart('Camera Model 1', 10)">Add to Cart</button>
+        </div>
+
+        <div class="product-item">
+            <img src="https://th.bing.com/th/id/OIP.p7L4mTgoNYVPeYw2ZPNeIQAAAA?w=183&h=183&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                alt="Camera 2">
+            <h2>Camera Model 2</h2>
+            <p class="features">Features: Compact design, 4K video, 15fps continuous shooting, Dual Pixel AF,
+                lightweight and easy to carry for travel photography.</p>
+            <p>Price per day: ₹12</p>
+            <button onclick="addToCart('Camera Model 2', 12)">Add to Cart</button>
+        </div>
+
+        <div class="product-item">
+            <img src="https://th.bing.com/th/id/OIP.6mMAerSNoj0WCLERuAvlzgHaE5?w=276&h=183&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                alt="Camera 3">
+            <h2>Camera Model 3</h2>
+            <p class="features">Features: 20.3MP sensor, built-in Wi-Fi and NFC, 1080p video, fully articulated LCD
+                screen, perfect for vlogging and entry-level photography.</p>
+            <p>Price per day: ₹15</p>
+            <button onclick="addToCart('Camera Model 3', 15)">Add to Cart</button>
+        </div>
+
+        <div class="product-item">
+            <img src="https://th.bing.com/th/id/OIP.VPGndvlc6NnKvBas6p2B6QHaHa?w=182&h=183&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                alt="Camera 4">
+            <h2>Camera Model 4</h2>
+            <p class="features">Features: Full-frame mirrorless, 42.4MP, 5-axis stabilization, weather-sealed body,
+                ideal for professional landscape and portrait photography.</p>
+            <p>Price per day: ₹18</p>
+            <button onclick="addToCart('Camera Model 4', 18)">Add to Cart</button>
+        </div>
+
+        <div class="product-item">
+            <img src="https://th.bing.com/th/id/OIP.X53G9jyl0APh5Y0vTGOErgHaHa?w=192&h=192&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                alt="Camera 5">
+            <h2>Camera Model 5</h2>
+            <p class="features">Features: Compact and portable, 10MP sensor, water and shock resistant, perfect for
+                adventure and action photography.</p>
+            <p>Price per day: ₹14</p>
+            <button onclick="addToCart('Camera Model 5', 14)">Add to Cart</button>
+        </div>
+
+        <div class="product-item">
+            <img src="https://th.bing.com/th/id/OIP.R_q-iteeJ9MORHSTbpewEwHaHa?w=192&h=192&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                alt="Camera 6">
+            <h2>Camera Model 6</h2>
+            <p class="features">Features: High ISO range, 4K video, fast autofocus, ideal for low-light and sports
+                photography.</p>
+            <p>Price per day: ₹16</p>
+            <button onclick="addToCart('Camera Model 6', 16)">Add to Cart</button>
+        </div>
+
+        <div class="product-item">
+            <img src="https://th.bing.com/th/id/OIP.X3mUHMoSHb891DvpF232iAHaHa?w=192&h=192&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                alt="Camera 7">
+            <h2>Camera Model 7</h2>
+            <p class="features">Features: 16MP sensor, Wi-Fi and Bluetooth, compact design, beginner-friendly for
+                everyday photography.</p>
+            <p>Price per day: ₹11</p>
+            <button onclick="addToCart('Camera Model 7', 11)">Add to Cart</button>
+        </div>
+
+        <div class="product-item">
+            <img src="https://th.bing.com/th/id/OIP.em4p4k__88DhkJ9Zgwn2MgHaFs?w=269&h=207&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                alt="Camera 8">
+            <h2>Camera Model 8</h2>
+            <p class="features">Features: 12MP, water-resistant, shockproof, ideal for action sports and underwater
+                shooting.</p>
+            <p>Price per day: ₹13</p>
+            <button onclick="addToCart('Camera Model 8', 13)">Add to Cart</button>
+        </div>
+
+        <div class="product-item">
+            <img src="https://th.bing.com/th/id/OIP.-CwZuHwMLsC8xR_7CTWwRAHaHa?w=198&h=198&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                alt="Camera 9">
+            <h2>Camera Model 9</h2>
+            <p class="features">Features: 30.4MP sensor, Full HD video, built-in Wi-Fi and GPS, suitable for travel
+                photography and landscapes.</p>
+            <p>Price per day: ₹16</p>
+            <button onclick="addToCart('Camera Model 9', 16)">Add to Cart</button>
+        </div>
+
+        <div class="product-item">
+            <img src="https://th.bing.com/th/id/OIP.7O4D1qU5tksydRyuHadIfwAAAA?w=191&h=198&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                alt="Camera 10">
+            <h2>Camera Model 10</h2>
+            <p class="features">Features: 4K video, 20MP sensor, compact and lightweight, perfect for street and candid
+                photography.</p>
+            <p>Price per day: ₹18</p>
+            <button onclick="addToCart('Camera Model 10', 18)">Add to Cart</button>
+        </div>
+
+        <div class="product-item">
+            <img src=" https://th.bing.com/th/id/OIP.6wZNccOxPD5Zntpo-yH2qwHaHa?w=198&h=198&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                alt="Camera 11">
+            <h2>Camera Model 11</h2>
+            <p class="features">Features: 24MP sensor, 4K video at 30fps, fast autofocus, ideal for portrait and action
+                shots.</p>
+            <p>Price per day: ₹10</p>
+            <button onclick="addToCart('Camera Model 11', 10)">Add to Cart</button>
+        </div>
+
+        <div class="product-item">
+            <img src="https://th.bing.com/th/id/OIP.D4fNDF7UD-dq99D7tynrogHaHa?w=198&h=198&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                alt="Camera 12">
+            <h2>Camera Model 12</h2>
+            <p class="features">Features: Full-frame, 36MP sensor, 8fps continuous shooting, perfect for high-quality
+                stills and video.</p>
+            <p>Price per day: ₹20</p>
+            <button onclick="addToCart('Camera Model 12', 20)">Add to Cart</button>
+        </div>
+
+        <div class="product-item">
+            <img src="https://th.bing.com/th/id/OIP.9BVdnER0ua7B4bhMvNadpwHaF7?w=232&h=185&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                alt="Camera 13">
+            <h2>Camera Model 13</h2>
+            <p class="features">Features: 16MP sensor, fast burst mode, ideal for sports and wildlife photography.</p>
+            <p>Price per day: ₹16</p>
+            <button onclick="addToCart('Camera Model 13', 16)">Add to Cart</button>
+        </div>
+
+        <div class="product-item">
+            <img src="http://ts2.mm.bing.net/th?id=OIP.RPMROCvlegd3FafvJOgUJAHaE8&pid=15.1" alt="Camera 14">
+            <h2>Camera Model 14</h2>
+            <p class="features">Features: 22MP sensor, in-body stabilization, built-in Wi-Fi, suitable for everyday
+                photography and travel.</p>
+            <p>Price per day: ₹12</p>
+            <button onclick="addToCart('Camera Model 14', 12)">Add to Cart</button>
+        </div>
+
+        <div class="product-item">
+            <img src="https://th.bing.com/th/id/OIP.Goh_Em5E9SSv22wiu99SgwHaFi?w=257&h=192&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                alt="Camera 15">
+            <h2>Camera Model 15</h2>
+            <p class="features">Features: 24.2MP sensor, great low-light performance, ideal for landscape and
+                architectural photography.</p>
+            <p>Price per day: ₹20</p>
+            <button onclick="addToCart('Camera Model 15', 20)">Add to Cart</button>
+        </div>
+
+        <div class="product-item">
+            <img src="https://th.bing.com/th/id/OIP.hfG_n-RWV2XuZJgU82mt2gHaE8?w=288&h=192&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                alt="Camera 16">
+            <h2>Camera Model 16</h2>
+            <p class="features">Features: 18MP sensor, 4K video, portable design, great for travel and daily use.</p>
+            <p>Price per day: ₹25</p>
+            <button onclick="addToCart('Camera Model 16', 25)">Add to Cart</button>
+        </div>
+    </section>
+
+    <!-- Cart Section -->
+    <section class="cart-section">
+        <h2>Cart</h2>
+        <ul id="cart"></ul>
+        <p>Total Price: ₹<span id="total-price">0</span></p>
+        <button id="confirm-rental" class="confirm-rental-btn">Confirm Rental</button>
+
+        <div class="policy-note">
+            <h3>Rental Return and Damage Policy</h3>
+            <ul>
+                <li>Please return all rented equipment on or before your deadline to avoid late charges.</li>
+                <li>If any damage occurs, repair charges will be applied based on an authorized service estimate.</li>
+                <li>For severe damage or loss, replacement charges up to the full product value may be billed.</li>
+                <li>A professional reminder email will be sent to your registered email before your rental ends.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Modal for Cart Items -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-modal">&times;</span>
+            <h2>Your Cart</h2>
+            <ul id="modal-cart"></ul>
+            <p>Total Price: ₹<span id="modal-total-price">0</span></p>
+        </div>
+    </div>
+
+    <div id="toast-message" class="toast-message" role="status" aria-live="polite"></div>
+
+    <div id="consent-overlay" class="consent-overlay" role="dialog" aria-modal="true" aria-labelledby="consent-title">
+        <div class="consent-card">
+            <h3 id="consent-title">Rental Policy Confirmation</h3>
+            <p>
+                Please confirm that you understand the return deadline and damage policy.
+                Accept to continue adding this camera to your cart, or decline to cancel.
+            </p>
+            <div class="consent-actions">
+                <button id="consent-deny" class="consent-btn deny" type="button">Decline</button>
+                <button id="consent-accept" class="consent-btn accept" type="button">Accept</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let cartItems = [];
+        let totalPrice = 0;
+        let toastTimer = null;
+
+        function showMessage(message, type = 'warning') {
+            const toast = document.getElementById('toast-message');
+            toast.textContent = message;
+            toast.className = `toast-message ${type} show`;
+
+            if (toastTimer) {
+                clearTimeout(toastTimer);
+            }
+
+            toastTimer = setTimeout(() => {
+                toast.className = 'toast-message';
+            }, 4500);
+        }
+
+        function requestPolicyConsent() {
+            return new Promise((resolve) => {
+                const overlay = document.getElementById('consent-overlay');
+                const acceptButton = document.getElementById('consent-accept');
+                const denyButton = document.getElementById('consent-deny');
+
+                const cleanup = () => {
+                    overlay.classList.remove('show');
+                    acceptButton.removeEventListener('click', onAccept);
+                    denyButton.removeEventListener('click', onDeny);
+                };
+
+                const onAccept = () => {
+                    cleanup();
+                    resolve(true);
+                };
+
+                const onDeny = () => {
+                    cleanup();
+                    resolve(false);
+                };
+
+                acceptButton.addEventListener('click', onAccept);
+                denyButton.addEventListener('click', onDeny);
+                overlay.classList.add('show');
+            });
+        }
+
+        async function addToCart(itemName, price) {
+            const days = prompt("Enter the number of days to rent this camera:");
+            const numDays = parseInt(days);
+
+            if (isNaN(numDays) || numDays <= 0) {
+                showMessage('Please enter a valid number of rental days.', 'error');
+                return;
+            }
+
+            const accepted = await requestPolicyConsent();
+            if (!accepted) {
+                showMessage('Item was not added to cart because policy was declined.', 'warning');
+                return;
+            }
+
+            const itemTotalPrice = price * numDays;
+            cartItems.push({
+                name: itemName,
+                pricePerDay: price,
+                days: numDays,
+                totalPrice: itemTotalPrice
+            });
+            totalPrice += itemTotalPrice;
+            displayCart();
+
+            showMessage(
+                'Important: Please return the camera on or before your deadline. '
+                + 'If any damage occurs, repair or replacement charges may apply as per policy.',
+                'warning'
+            );
+        }
+
+        function displayCart() {
+            const cartList = document.getElementById('cart');
+            const cartCount = document.getElementById('cart-count');
+            const totalPriceDisplay = document.getElementById('total-price');
+
+            cartList.innerHTML = ''; // Clear existing cart items
+            cartItems.forEach((item) => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.name} (${item.days} day(s)) - ₹${item.totalPrice}`;
+                cartList.appendChild(listItem);
+            });
+
+            cartCount.textContent = cartItems.length; // Update cart count
+            totalPriceDisplay.textContent = totalPrice; // Update total price
+        }
+
+        // Modal functionality
+        const cartIcon = document.getElementById('cart-icon');
+        const modal = document.getElementById('cartModal');
+        const closeModal = document.getElementById('close-modal');
+
+        cartIcon.onclick = function () {
+            displayModalCart();
+            modal.style.display = "block";
+        }
+
+        closeModal.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        function displayModalCart() {
+            const modalCartList = document.getElementById('modal-cart');
+            const modalTotalPriceDisplay = document.getElementById('modal-total-price');
+
+            modalCartList.innerHTML = ''; // Clear existing modal cart items
+            cartItems.forEach((item, index) => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.name} (${item.days} day(s)) - ₹${item.totalPrice}`;
+
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'Remove';
+                removeButton.className = 'remove-button';
+                removeButton.onclick = function () {
+                    removeFromCart(index);
+                };
+
+                listItem.appendChild(removeButton);
+                modalCartList.appendChild(listItem);
+            });
+            modalTotalPriceDisplay.textContent = totalPrice; // Update modal total price
+        }
+
+        function removeFromCart(index) {
+            const itemPrice = cartItems[index].totalPrice; // Get the price of the item being removed
+            totalPrice -= itemPrice; // Update total price
+            cartItems.splice(index, 1); // Remove item from cart
+            displayCart(); // Update the main cart display
+            displayModalCart(); // Update the modal cart display
+        }
+
+        function getLoggedInUser() {
+            try {
+                const userData = localStorage.getItem('cameraStoreUser');
+                return userData ? JSON.parse(userData) : null;
+            } catch (error) {
+                console.error('User parse error:', error);
+                return null;
+            }
+        }
+
+        async function confirmRental() {
+            if (cartItems.length === 0) {
+                showMessage('Your cart is empty. Please add at least one camera for rental.', 'error');
+                return;
+            }
+
+            const user = getLoggedInUser();
+            if (!user || !user.id) {
+                showMessage('Please login first. Redirecting you to the login page.', 'warning');
+                window.location.href = 'login.html';
+                return;
+            }
+
+            const confirmButton = document.getElementById('confirm-rental');
+            confirmButton.disabled = true;
+            confirmButton.textContent = 'Confirming...';
+
+            try {
+                const response = await fetch('/api/rentals/confirm', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        userId: user.id,
+                        items: cartItems
+                    })
+                });
+
+                const data = await response.json();
+                if (!response.ok) {
+                    showMessage(data.message || 'Unable to confirm rental.', 'error');
+                    return;
+                }
+
+                showMessage('Rental confirmed successfully. Please check your registered email for details.', 'success');
+                cartItems = [];
+                totalPrice = 0;
+                displayCart();
+                displayModalCart();
+            } catch (error) {
+                console.error('Confirm rental error:', error);
+                showMessage('Unable to connect to server. Please try again.', 'error');
+            } finally {
+                confirmButton.disabled = false;
+                confirmButton.textContent = 'Confirm Rental';
+            }
+        }
+
+        document.getElementById('confirm-rental').addEventListener('click', confirmRental);
+    </script>
+
+    <script src="image-fallback.js"></script>
+</body>
+
+</html>

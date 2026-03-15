@@ -1,0 +1,51 @@
+/* sales1.css */
+
+/* Cart Icon in the top-right corner */
+#cart-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    display: none;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 50%;
+    color: white;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#cart-count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    border-radius: 50%;
+    padding: 3px 8px;
+}
+
+#cart-details {
+    width: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.cart-item {
+    margin-bottom: 10px;
+}
+
+.cart-item button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.cart-item button:hover {
+    background-color: darkred;
+}

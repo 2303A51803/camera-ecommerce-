@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tripods and Stabilizers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("https://wallpaper.forfun.com/fetch/06/06280a17826041c78966307a7170f16d.jpeg");
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        #cart {
+            font-size: 18px;
+            font-weight: bold;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
+
+        .item {
+            width: 200px;
+            margin: 15px;
+            background-color: #fff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .buy-btn {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cart-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .close-btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .remove-btn {
+            background-color: #ffc107;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Tripods and Stabilizers Collection</h1>
+        <div id="cart" onclick="toggleCart()">
+            🛒 Cart: <span id="cart-count">0</span>
+        </div>
+    </header>
+
+    <section id="gallery" style="display: flex; flex-wrap: wrap; justify-content: center; padding: 20px;">
+
+        <!-- Tripod 1 -->
+        <div class="item">
+            <img src="https://picsum.photos/seed/tripod-1/800/600" alt="Tripod 1"
+                style="width: 100%; border-radius: 5px;">
+            <p style="font-size: 14px; color: #555; margin: 10px 0;">Lightweight tripod, perfect for travel and outdoor
+                photography.</p>
+            <p style="font-size: 16px; font-weight: bold;">Price: ₹150</p>
+            <button class="buy-btn" onclick="addToCart('Lightweight tripod', 150)">Buy Now</button>
+        </div>
+
+        <!-- Tripod 2 -->
+        <div class="item">
+            <img src="https://picsum.photos/seed/tripod-2/800/600" alt="Tripod 2"
+                style="width: 100%; border-radius: 5px;">
+            <p style="font-size: 14px; color: #555; margin: 10px 0;">Heavy-duty tripod, ideal for studio and
+                professional use.</p>
+            <p style="font-size: 16px; font-weight: bold;">Price: ₹250</p>
+            <button class="buy-btn" onclick="addToCart('Heavy-duty tripod', 250)">Buy Now</button>
+        </div>
+
+        <!-- Stabilizer 1 -->
+        <div class="item">
+            <img src="https://picsum.photos/seed/stabilizer-1/800/600" alt="Stabilizer 1"
+                style="width: 100%; border-radius: 5px;">
+            <p style="font-size: 14px; color: #555; margin: 10px 0;">Gimbal stabilizer for smooth video capturing.</p>
+            <p style="font-size: 16px; font-weight: bold;">Price: ₹300</p>
+            <button class="buy-btn" onclick="addToCart('Gimbal stabilizer', 300)">Buy Now</button>
+        </div>
+
+        <!-- Stabilizer 2 -->
+        <div class="item">
+            <img src="https://picsum.photos/seed/stabilizer-2/800/600" alt="Stabilizer 2"
+                style="width: 100%; border-radius: 5px;">
+            <p style="font-size: 14px; color: #555; margin: 10px 0;">Handheld stabilizer, perfect for action shots.</p>
+            <p style="font-size: 16px; font-weight: bold;">Price: ₹200</p>
+            <button class="buy-btn" onclick="addToCart('Handheld stabilizer', 200)">Buy Now</button>
+        </div>
+
+        <!-- Tripod 3 -->
+        <div class="item">
+            <img src="https://picsum.photos/seed/tripod-3/800/600" alt="Tripod 3"
+                style="width: 100%; border-radius: 5px;">
+            <p style="font-size: 14px; color: #555; margin: 10px 0;">Compact tripod, great for smartphone photography.
+            </p>
+            <p style="font-size: 16px; font-weight: bold;">Price: ₹100</p>
+            <button class="buy-btn" onclick="addToCart('Compact tripod', 100)">Buy Now</button>
+        </div>
+
+        <!-- Stabilizer 3 -->
+        <div class="item">
+            <img src="https://picsum.photos/seed/stabilizer-3/800/600" alt="Stabilizer 3"
+                style="width: 100%; border-radius: 5px;">
+            <p style="font-size: 14px; color: #555; margin: 10px 0;">Professional stabilizer for DSLR cameras.</p>
+            <p style="font-size: 16px; font-weight: bold;">Price: ₹400</p>
+            <button class="buy-btn" onclick="addToCart('Professional stabilizer', 400)">Buy Now</button>
+        </div>
+
+        <!-- Tripod 4 -->
+        <div class="item">
+            <img src="https://picsum.photos/seed/tripod-4/800/600" alt="Tripod 4"
+                style="width: 100%; border-radius: 5px;">
+            <p style="font-size: 14px; color: #555; margin: 10px 0;">Flexible tripod, can be wrapped around objects for
+                unique angles.</p>
+            <p style="font-size: 16px; font-weight: bold;">Price: ₹120</p>
+            <button class="buy-btn" onclick="addToCart('Flexible tripod', 120)">Buy Now</button>
+        </div>
+
+        <!-- Stabilizer 4 -->
+        <div class="item">
+            <img src="https://picsum.photos/seed/stabilizer-4/800/600" alt="Stabilizer 4"
+                style="width: 100%; border-radius: 5px;">
+            <p style="font-size: 14px; color: #555; margin: 10px 0;">3-axis gimbal for professional video stabilization.
+            </p>
+            <p style="font-size: 16px; font-weight: bold;">Price: ₹500</p>
+            <button class="buy-btn" onclick="addToCart('3-axis gimbal', 500)">Buy Now</button>
+        </div>
+
+        <!-- Tripod 5 -->
+        <div class="item">
+            <img src="https://picsum.photos/seed/tripod-5/800/600" alt="Tripod 5"
+                style="width: 100%; border-radius: 5px;">
+            <p style="font-size: 14px; color: #555; margin: 10px 0;">Mini tripod, perfect for tabletop photography.</p>
+            <p style="font-size: 16px; font-weight: bold;">Price: ₹80</p>
+            <button class="buy-btn" onclick="addToCart('Mini tripod', 80)">Buy Now</button>
+        </div>
+
+        <!-- Stabilizer 5 -->
+        <div class="item">
+            <img src="https://picsum.photos/seed/stabilizer-5/800/600" alt="Stabilizer 5"
+                style="width: 100%; border-radius: 5px;">
+            <p style="font-size: 14px; color: #555; margin: 10px 0;">Smartphone stabilizer for smooth mobile video.</p>
+            <p style="font-size: 16px; font-weight: bold;">Price: ₹220</p>
+            <button class="buy-btn" onclick="addToCart('Smartphone stabilizer', 220)">Buy Now</button>
+        </div>
+
+    </section>
+
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-content">
+            <h2>Your Cart</h2>
+            <div id="cart-items"></div>
+            <button class="close-btn" onclick="toggleCart()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        alert("hello);
+        let cartCount = 0;
+        let cartItems = [];
+
+        function addToCart(itemName, price) {
+            cartCount++;
+            cartItems.push({ name: itemName, price: price });
+            document.getElementById("cart-count").innerText = cartCount;
+            alert("Item added to cart. Price: ₹" + price);
+        }
+
+        function toggleCart() {
+            const modal = document.getElementById("cart-modal");
+            modal.style.display = modal.style.display === "flex" ? "none" : "flex";
+            displayCartItems();
+        }
+
+        function displayCartItems() {
+            const cartItemsContainer = document.getElementById("cart-items");
+            cartItemsContainer.innerHTML = ""; // Clear previous items
+            if (cartItems.length === 0) {
+                cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+            } else {
+                cartItems.forEach((item, index) => {
+                    cartItemsContainer.innerHTML += `
+                        <div>
+                            <span>${item.name} - ₹${item.price}</span>
+                            <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+                        </div>
+                    `;
+                });
+            }
+        }
+
+        function removeFromCart(index) {
+            cartCount--;
+            cartItems.splice(index, 1); // Remove item from cart
+            document.getElementById("cart-count").innerText = cartCount;
+            displayCartItems(); // Update displayed cart items
+            alert("Item removed from cart.");
+        }
+    </script>
+    <script src="image-fallback.js"></script>
+</body>
+
+</html>

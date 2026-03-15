@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+#camera-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.camera {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 15px;
+    transition: transform 0.3s ease;
+}
+
+.camera:hover {
+    transform: scale(1.05);
+}
+
+.camera img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.camera h3 {
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+
+.camera p {
+    font-size: 1.1em;
+    color: #333;
+    margin: 10px 0;
+}
+
+.camera button {
+    padding: 10px 15px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.camera button:hover {
+    background-color: #4cae4c;
+}

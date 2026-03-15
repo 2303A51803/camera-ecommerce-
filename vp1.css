@@ -1,0 +1,108 @@
+body {
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN0MaiykfNgkj_AOtPU2SHIf8MznLi0YiCEQ&s");
+    background-size: cover;       /* Adjusts image to cover the whole area */
+    background-repeat: no-repeat; /* Prevents image from repeating */
+    background-position: center;  /* Centers the image */
+}
+
+
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em 0;
+    width: 100%;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+header p {
+    font-size: 16px;
+    margin: 5px 0 0;
+}
+
+.product-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+    padding: 40px 20px;
+    justify-content: center;
+}
+
+.product-item {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 250px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.product-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    background-color: orange; /* Background color set to orange */
+    transition: transform 0.3s;
+}
+
+.product-item:hover img {
+    transform: scale(1.05);
+}
+
+.product-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.product-info h2 {
+    font-size: 20px;
+    color: #333;
+    margin: 0;
+    transition: color 0.3s;
+}
+
+.product-info h2:hover {
+    color: #007bff; /* Hover effect for camera model text */
+}
+
+.product-info p {
+    font-size: 14px;
+    color: skyblue;
+    margin: 10px 0;
+    transition: color 0.3s;
+}
+
+.product-info p:hover {
+    color: #555; /* Hover effect for the description text */
+}
+
+.back-link {
+    margin: 20px;
+    text-align: center;
+}
+
+.back-link a {
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.back-link a:hover {
+    background-color: #333;
+    color: #fff;
+}

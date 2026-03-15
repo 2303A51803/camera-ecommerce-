@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canon Cameras for Sale</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("https://wallpaper.forfun.com/fetch/06/06280a17826041c78966307a7170f16d.jpeg");
+            text-align: center;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        #camera-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            justify-content: center;
+        }
+
+        .camera {
+            width: 220px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: white;
+            padding: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .camera img {
+            width: 100%;
+            height: 180px; /* Fixed height for uniformity */
+            object-fit: cover; /* Ensure aspect ratio is maintained */
+            border-radius: 8px;
+        }
+
+        .camera h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .camera p {
+            font-size: 16px;
+            color: #333;
+        }
+
+       .camera .description {
+    font-size: 14px; /* Slightly larger font size */
+    color: #555; /* Softer gray color for better readability */
+    margin-top: 8px;
+    line-height: 1.6; /* Increased line height for better spacing */
+    text-align: left; /* Align text to the left for a cleaner look */
+    border-top: 1px solid #eee; /* Add a subtle border above the description */
+    padding-top: 10px; /* Add padding to separate from the title */
+    padding-bottom: 10px; /* Add padding for bottom spacing */
+}
+        .camera button {
+            padding: 10px;
+            font-size: 14px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .camera button:hover {
+            background-color: #218838;
+        }
+
+        .cart-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: white;
+            background-color: #2c3e50;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding:  20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 8px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #cart {
+            list-style: none;
+            padding: 0;
+        }
+
+        #cart li {
+            font-size: 1rem;
+            color: #333;
+            padding: 8px 0;
+        }
+
+        .remove-button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 5px 10px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Canon Cameras for Sale</h1>
+    </header>
+
+    <div class="cart-icon" id="cart-icon">
+        🛒 <span id="cart-count">0</span>
+    </div>
+
+    <section id="camera-gallery">
+        <div class="camera">
+            <img src="https://th.bing.com/th/id/OIP.9HHMNft1naMIMdFec8vlyQHaGI?w=208&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Canon EOS 5D">
+            <h3>Canon EOS 5D</h3>
+            <p>₹1,12,500</p>
+            <div class="description">
+                <p>Sensor: Full-Frame CMOS</p>
+                <p>Electronic Shutter: 1/8000s</p>
+                <p>LCD Monitor: 3.0" 1.04M-dot</p>
+            </div>
+            <button onclick="addToCart('Canon EOS 5D', 112500)">Add to Cart</button>
+        </div>
+        <div class="camera">
+            <img src="https://th.bing.com/th/id/OIP.YTQpVbQnrqhlq7LLvWkisgHaE3?w=294&h=193&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Canon EOS 6D">
+            <h3>Canon EOS 6D</h3>
+            <p>₹1,35,000</p>
+            <div class="description">
+                <p>Sensor: Full-Frame CMOS</p>
+                <p>Electronic Shutter: 1/4000s</p>
+                <p>LCD Monitor: 3.0" 1.04M-dot</p>
+            </div>
+            <button onclick="addToCart('Canon EOS 6D', 135000)">Add to Cart</button>
+        </div>
+        <div class="camera">
+            <img src="https://th.bing.com/th/id/OIP.4bLhDyPgkuvUfprfLAqF4gHaEK?w=277&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Canon EOS R5">
+            <h3>Canon EOS R5</h3>
+            <p>₹1,87,500</p>
+            <div class="description">
+                <p>Sensor: Full-Frame CMOS</p>
+                <p>Electronic Shutter: 1/8000s</p>
+                <p>LCD Monitor: 3.2" 2.1M-dot</p>
+            </div>
+            <button onclick="addToCart('Canon EOS R5', 187500)">Add to Cart</button>
+        </div>
+        <div class="camera">
+            <img src="https://th.bing.com/th/id/OIP.1R_Q_AFnNGBi9nLv-gd8AwHaGd?w=188&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Canon EOS R6">
+            <h3>Canon EOS R6</h3>
+            <p>₹1,65,000</p>
+            <div class="description">
+                <p>Sensor: Full-Frame CMOS</p>
+                <p>Electronic Shutter: 1/8000s</p>
+                <p>LCD Monitor: 3.0" 1.04M-dot</p>
+            </div>
+            <button onclick="addToCart('Canon EOS R6', 165000)">Add to Cart</button>
+        </div>
+        <div class="camera">
+            <img src="https://th.bing.com/th/id/OIP.rb0inUoMDGV9rnSYEZGnzAHaFh?w=269&h=200&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Canon PowerShot G7">
+            <h3>Canon PowerShot G7</h3>
+            <p>₹60,000</p>
+            <div class="description">
+                <p>Sensor: 1.0" CMOS</p>
+                <p>Electronic Shutter: 1/2000s</p>
+                <p>LCD Monitor: 3.0" 1.04M-dot</p>
+            </div>
+            <button onclick="addToCart('Canon PowerShot G7', 60000)">Add to Cart</button>
+        </div>
+        <div class="camera">
+            <img src="https://th.bing.com/th/id/OIP.ZBH7hc0hRG1d5lUKGqXfbwHaHa?w=219&h=219&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Canon Rebel T7i">
+            <h3>Canon Rebel T7i</h3>
+            <p>₹56,250</p>
+            <div class="description">
+                <p>Sensor: APS-C CMOS</p>
+                <p>Electronic Shutter: 1/4000s</p>
+                <p>LCD Monitor: 3.0" 1.04M-dot</p>
+            </div>
+            <button onclick="addToCart('Canon Rebel T7i', 56250)">Add to Cart</button>
+        </div>
+        <div class="camera">
+            <img src="https://th.bing.com/th/id/OIP.9BVdnER0ua7B4bhMvNadpwHaF7?w=229&h=183&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Canon EOS M50">
+            <h3>Canon EOS M50</h3>
+            <p>₹45,000</p>
+            <div class="description">
+                <p>Sensor: APS-C CMOS</p>
+                <p>Electronic Shutter: 1/4000s</p>
+                <p>LCD Monitor: 3.0" 1.04M-dot</p>
+            </div>
+            <button onclick="addToCart('Canon EOS M50', 45000)">Add to Cart</button>
+        </div>
+        <div class="camera">
+            <img src="https://th.bing.com/th/id/OIP.WnVcIWtug1Zu2UeRBXl11wHaHa?w=196&h=196&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Canon EOS RP">
+            <h3>Canon EOS RP</h3>
+            <p>₹97,500</p>
+            <div class="description">
+                <p>Sensor: Full-Frame CMOS</p>
+                <p>Electronic Shutter: 1/4000s</p>
+                <p>LCD Monitor: 3.0" 1.04M-dot</p>
+            </div>
+            <button onclick="addToCart('Canon EOS RP', 97500)">Add to Cart</button>
+        </div>
+        <div class="camera">
+            <img src="https://th.bing.com/th/id/OIP.0poHlIf0VSa0y28qcCNONAHaGS?w=218&h=185&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Canon 1DX Mark III">
+            <h3>Canon 1DX Mark III</h3>
+            <p>₹4,87,500</p>
+            <div class="description">
+                <p>Sensor: Full-Frame CMOS</p>
+                <p>Electronic Shutter: 1/8000s</p>
+                <p>LCD Monitor: 3.2" 2.1M-dot</p>
+            </div>
+            <button onclick="addToCart('Canon 1DX Mark III', 487500)">Add to Cart</button>
+        </div>
+        <div class="camera">
+            <img src="https://th.bing.com/th/id/OIP.Mg5BYuYjmlHHH-EBtBoEEQHaHa?w=174&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Canon EOS 90D">
+            <h3>Canon EOS 90D</h3>
+            <p>₹90,000</p>
+            <div class="description">
+                <p>Sensor: APS-C CMOS</p>
+                <p>Electronic Shutter: 1/8000s</p>
+                <p>LCD Monitor: 3.0" 1.04M-dot</p>
+            </div>
+            <button onclick="addToCart('Canon EOS 90D', 90000)">Add to Cart</button>
+        </div>
+    </section>
+
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-modal">&times;</span>
+            <h2>Your Cart</h2>
+            <ul id="modal-cart"></ul>
+            <p>Total Price: ₹<span id="modal-total-price">0</span></p>
+        </div>
+    </div>
+
+    <script>
+        const cart = [];
+        let totalPrice = 0;
+
+        function addToCart(productName, price) {
+            const product = { name: productName, price: price };
+            cart.push(product);
+            totalPrice += price;
+            document.getElementById('cart-count').textContent = cart.length;
+            alert(`Thank you for ordering, MSD! ${productName} has been added to your cart.`);
+        }
+
+        document.getElementById('cart-icon').onclick = function() {
+            displayModalCart();
+            document.getElementById('cartModal').style.display = "block";
+        }
+
+        document.getElementById('close-modal').onclick = function() {
+            document.getElementById('cartModal').style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('cartModal')) {
+                document.getElementById('cartModal').style.display = "none";
+            }
+        }
+
+        function displayModalCart() {
+            const modalCartList = document.getElementById('modal-cart');
+            modalCartList.innerHTML = '';
+            cart.forEach((item, index) => {
+                const listItem = document.createElement('li');
+                listItem.textContent = item.name + ' - ₹' + item.price;
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'Remove';
+                removeButton.className = 'remove-button';
+                removeButton.onclick = function() {
+                    removeFromCart(index);
+                };
+                listItem.appendChild(removeButton);
+                modalCartList.appendChild(listItem);
+            });
+            document.getElementById('modal-total-price').textContent = totalPrice;
+        }
+
+        function removeFromCart(index) {
+            totalPrice -= cart[index].price;
+            cart.splice(index, 1);
+            document.getElementById('cart-count').textContent = cart.length;
+            displayModalCart();
+        }
+    </script>
+
+    <script src="image-fallback.js"></script>
+</body>
+</html>

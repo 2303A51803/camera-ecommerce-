@@ -1,0 +1,112 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("https://wallpaper.forfun.com/fetch/06/06280a17826041c78966307a7170f16d.jpeg");
+    color: #333;
+}
+
+/* Header Styling */
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #333;
+    color: #fff;
+}
+
+.header-top .logo img {
+    height: 50px;
+}
+
+.user-options a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.user-options a:hover {
+    color: #f0c14b;
+}
+
+/* Main Section Styling */
+.brands-section {
+    padding: 20px;
+    text-align: center;
+}
+
+.brands-section h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.brand-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.brand-card {
+    width: 250px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.brand-card:hover {
+    transform: scale(1.05);
+}
+
+.brand-logo {
+    width: 150px;  /* Set the width you desire */
+    height: auto;  /* Maintain the aspect ratio */
+    max-height: 100px; /* Set a maximum height if needed */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+}
+.brand-card h2 {
+    font-size: 20px;
+    margin: 10px 0;
+    color: #333;
+}
+
+.brand-card p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.btn-view-products {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #f0c14b;
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.btn-view-products:hover {
+    background-color: #ffa41b;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    font-size: 14px;
+}
